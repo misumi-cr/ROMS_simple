@@ -17,7 +17,7 @@
 #define ANA_BTFLUX
 #define ANA_BPFLUX
 #define ASSUMED_SHAPE
-#define  AVERAGES
+#define AVERAGES
 #define CURVGRID
 #define DIFF_GRID
 #define DJ_GRADPS
@@ -49,7 +49,8 @@
 #define UV_COR
 #define UV_C4ADVECTION
 #define UV_QDRAG
-#define UV_VIS4
+#define UV_VIS2
+#undef  UV_VIS4
 #define VAR_RHO_2D
 #define VISC_GRID
 
@@ -71,19 +72,19 @@
 #ifdef LMD_MIXING
 # define LMD_CONVEC
 # define LMD_DDMIX
-# define LMD_TMIX
+# undef  LMD_TMIX
 # define LMD_NONLOCAL
 # define LMD_RIMIX
 # define LMD_SHAPIRO
 # define LMD_SKPP
 #endif
 
-#define TINFLUX
-#define TCLIMATOLOGY
-#define TCLM_NUDGING
+#undef  TINFLUX
+#undef  TCLIMATOLOGY
+#undef  TCLM_NUDGING
 
-#define DICE
-#define DUST
+#undef  DICE
+#undef  DUST
 
 /*
 **  Biological model options.
@@ -95,14 +96,14 @@
 #undef  NPZD_FRANKS
 #undef  NPZD_IRON
 #undef  NPZD_POWELL
-#define BEC
+#undef  BEC
 
 #undef  FE_TAG
 
-#define DIAGNOSTICS
-#define DIAGNOSTICS_UV
-#define DIAGNOSTICS_TS
-#define DIAGNOSTICS_BIO
+#undef  DIAGNOSTICS
+#undef  DIAGNOSTICS_UV
+#undef  DIAGNOSTICS_TS
+#undef  DIAGNOSTICS_BIO
 
 #undef  COAG
 

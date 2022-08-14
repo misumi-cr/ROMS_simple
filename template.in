@@ -92,9 +92,9 @@ GridsInLayer =  1
 ! Grid dimension parameters. See notes below in the Glossary for how to set
 ! these parameters correctly.
 
-          Lm == 1312          ! Number of I-direction INTERIOR RHO-points
-          Mm == 728           ! Number of J-direction INTERIOR RHO-points
-           N == 45            ! Number of vertical levels
+          Lm == 50            ! Number of I-direction INTERIOR RHO-points
+          Mm == 100           ! Number of J-direction INTERIOR RHO-points
+           N == 30            ! Number of vertical levels
 
         Nbed =  0             ! Number of sediment bed layers
 
@@ -107,8 +107,8 @@ GridsInLayer =  1
 ! shared-memory configurations used to determine tile horizontal range
 ! indices (Istr,Iend) and (Jstr,Jend), [1:Ngrids].
 
-      NtileI == 50                             ! I-direction partition
-      NtileJ == 40                             ! J-direction partition
+      NtileI == 2                             ! I-direction partition
+      NtileJ == 20                             ! J-direction partition
 
 ! Set lateral boundary conditions keyword. Notice that a value is expected
 ! for each boundary segment per nested grid for each state variable.
@@ -144,15 +144,15 @@ GridsInLayer =  1
 !
 !                   1       2       3       4
 
-   LBC(isFsur) ==   Cha     Cha     Clo     Cha         ! free-surface
-   LBC(isUbar) ==   Fla     Fla     Clo     Fla         ! 2D U-momentum
-   LBC(isVbar) ==   Fla     Fla     Clo     Fla         ! 2D V-momentum
-   LBC(isUvel) ==   RadNud  RadNud  Clo     RadNud      ! 3D U-momentum
-   LBC(isVvel) ==   RadNud  RadNud  Clo     RadNud      ! 3D V-momentum
-   LBC(isMtke) ==   RadNud  RadNud  Clo     RadNud      ! mixing TKE
+   LBC(isFsur) ==   Clo     Cha     Cha     Cha         ! free-surface
+   LBC(isUbar) ==   Clo     Fla     Fla     Fla         ! 2D U-momentum
+   LBC(isVbar) ==   Clo     Fla     Fla     Fla         ! 2D V-momentum
+   LBC(isUvel) ==   Clo     Rad     Rad     Rad         ! 3D U-momentum
+   LBC(isVvel) ==   Clo     Rad     Rad     Rad         ! 3D V-momentum
+   LBC(isMtke) ==   Clo     Rad     Rad     Rad         ! mixing TKE
 
-   LBC(isTvar) ==   RadNud  RadNud  Clo     RadNud \    ! temperature
-                    RadNud  RadNud  Clo     RadNud      ! salinity
+   LBC(isTvar) ==   Clo     RadNud  RadNud  RadNud \    ! temperature
+                    Clo     RadNud  RadNud  RadNud      ! salinity
 
 ! Adjoint-based algorithms can have different lateral boundary
 ! conditions keywords.
@@ -186,7 +186,7 @@ ad_VolCons(north) ==  F                            ! northern boundary
 
       NTIMES == ${NTIMES}
           DT == ${DT}
-     NDTFAST == 50
+     NDTFAST == 30
 
 ! Model iteration loops parameters.
 
@@ -249,8 +249,8 @@ ad_VolCons(north) ==  F                            ! northern boundary
 ! Harmonic/biharmonic horizontal diffusion of tracer for nonlinear model
 ! and adjoint-based algorithms: [1:NAT+NPT,Ngrids].
 
-        TNU2 == 10.d0  10.d0                    ! m2/s
-        TNU4 == 0.9d10 0.9d10                   ! m4/s
+        TNU2 == 5.0d0  5.0d0                    ! m2/s
+        TNU4 == 0.0d0  0.0d0                    ! m4/s
 
      ad_TNU2 == 0.0d0  0.0d0                    ! m2/s
      ad_TNU4 == 0.0d0  0.0d0                    ! m4/s
@@ -258,8 +258,8 @@ ad_VolCons(north) ==  F                            ! northern boundary
 ! Harmonic/biharmonic, horizontal viscosity coefficient for nonlinear model
 ! and adjoint-based algorithms: [Ngrids].
 
-       VISC2 == 3600.0d0                         ! m2/s
-       VISC4 ==  65.0d10                         ! m4/s
+       VISC2 == 5.0d0                           ! m2/s
+       VISC4 == 0.0d0                           ! m4/s
 
     ad_VISC2 == 0.0d0                           ! m2/s
     ad_VISC4 == 0.0d0                           ! m4/s
@@ -267,14 +267,14 @@ ad_VolCons(north) ==  F                            ! northern boundary
 ! Vertical mixing coefficients for tracers in nonlinear model and
 ! basic state scale factor in adjoint-based algorithms: [1:NAT+NPT,Ngrids]
 
-     AKT_BAK == 1.0d-5 1.0d-5                   ! m2/s
+     AKT_BAK == 1.0d-6 1.0d-6                   ! m2/s
 
   ad_AKT_fac == 1.0d0  1.0d0                    ! nondimensional
 
 ! Vertical mixing coefficient for momentum for nonlinear model and
 ! basic state scale factor in adjoint-based algorithms: [Ngrids].
 
-     AKV_BAK == 3.0d-4                          ! m2/s
+     AKV_BAK == 1.0d-5                          ! m2/s
 
   ad_AKV_fac == 1.0d0                           ! nondimensional
 
@@ -339,9 +339,9 @@ ad_VolCons(north) ==  F                            ! northern boundary
 
 ! Vertical S-coordinates parameters (see below for details), [1:Ngrids].
 
-     THETA_S == 8.0d0                      ! surface stretching parameter
-     THETA_B == 0.125d0                      ! bottom  stretching parameter
-      TCLINE == 400.0d0                     ! critical depth (m)
+     THETA_S == 6.0d0                      ! surface stretching parameter
+     THETA_B == 0.0D0                      ! bottom  stretching parameter
+      TCLINE == 3.0d0                      ! critical depth (m)
 
 ! Mean Density and Brunt-Vaisala frequency.
 
@@ -385,7 +385,7 @@ ad_VolCons(north) ==  F                            ! northern boundary
 ! Logical switches (TRUE/FALSE) to specify which variables to process for
 ! tracers climatology: [1:NAT+NPT,Ngrids]. See glossary below for details.
 
-  LtracerCLM == T T                        ! temperature, salinity, inert
+  LtracerCLM == F F                        ! temperature, salinity, inert
 
 ! Logical switches (TRUE/FALSE) to specify which variables to process for
 ! tracers 3d influx: [1:NAT+NPT,Ngrids]. See glossary below for details.
@@ -726,8 +726,8 @@ Dout(iTvdif) == T T     ! temp_vdiff, ...    vertical diffusion
 
 ! Input NetCDF file names, [1:Ngrids].
 
-     GRDNAME == ${ROMS_DAT_DIR}/h010_l045_v001/ezl1420ac.nc
-     ININAME == /lustre/wrk/misumi/roms_out/h010_l045_v001.190515.023/out/h010_l045_v001.190515.021.r.020.nc
+     GRDNAME == ${ROMS_DAT_DIR}/Grd_220812.nc
+     ININAME == ${ROMS_DAT_DIR}/Ini_220812.nc
      ITLNAME == /dev/null
      IRPNAME == /dev/null
      IADNAME == /dev/null
@@ -746,9 +746,9 @@ Dout(iTvdif) == T T     ! temp_vdiff, ...    vertical diffusion
 ! line per entry with a vertical bar (|) symbol after each entry,
 ! except the last one.
 
-     BRYNAME == /lustre/wrk/misumi/roms_data/h010_l045_v001/h010_l045_v001.bry-ecosys.200214.nc
-     CLMNAME == /lustre/wrk/misumi/roms_data/h010_l045_v001/h010_l045_v001.clm-ecosys-woa.200214.nc
-     FLXNAME == /lustre/wrk/misumi/roms_data/h010_l045_v001/h010_l045_v001.fesed.191117.nc
+     BRYNAME == ${ROMS_DAT_DIR}/Bry_220812.nc
+     CLMNAME == ${ROMS_DAT_DIR}/Clm_220812.nc
+     FLXNAME == /dev/null
 
 ! Input forcing NetCDF file name(s).  The USER has the option to enter
 ! several file names for each nested grid.  For example, the USER may
@@ -762,22 +762,11 @@ Dout(iTvdif) == T T     ! temp_vdiff, ...    vertical diffusion
 ! per entry with a continuation (\) or vertical bar (|) symbol after each
 ! entry, except the last one.
 
-     NFFILES == 12                          ! number of unique forcing files
+     NFFILES == 1                           ! number of unique forcing files
 
-     FRCNAME == ${ROMS_DAT_DIR}/h010_l045_v001/SSSS_flx_pycom.nc \
-                ${ROMS_DAT_DIR}/h010_l045_v001/SSST_flx_pycom.nc \
-                ${ROMS_DAT_DIR}/h010_l045_v001/frc_dQds.nc       \
-                ${ROMS_DAT_DIR}/h010_l045_v001/frc_Lwdn.nc       \
-                ${ROMS_DAT_DIR}/h010_l045_v001/frc_Pair.nc       \
-                ${ROMS_DAT_DIR}/h010_l045_v001/frc_Sair.nc       \
-                ${ROMS_DAT_DIR}/h010_l045_v001/frc_Radf0.nc      \
-                ${ROMS_DAT_DIR}/h010_l045_v001/frc_Swdn.nc       \
-                ${ROMS_DAT_DIR}/h010_l045_v001/frc_Tair.nc       \
-                ${ROMS_DAT_DIR}/h010_l045_v001/frc_Uwin.nc       \
-                ${ROMS_DAT_DIR}/h010_l045_v001/frc_Vwin.nc       \
-                ${ROMS_DAT_DIR}/h010_l045_v001/h010_l045_v001.sflux-ecosys.190514.nc
+     FRCNAME == ${ROMS_DAT_DIR}/Frc_220812.nc
 
-     TMXNAME == ${ROMS_DAT_DIR}/h010_l045_v001/h010_l045_v001.tmix.191124.nc
+     TMXNAME == /dev/null
 
 ! Output NetCDF file names, [1:Ngrids].
 

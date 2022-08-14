@@ -1,16 +1,16 @@
-export CASE_NAME="h010_l045_v001.190515.099"
-export JOB_NAME="h010_099"
+export CASE_NAME="simple"
+export JOB_NAME="simple"
 export HOME_DIR=${PWD}
 export WORK_DIR=/lustre/wrk/misumi/roms_out/${CASE_NAME}
-export ROMS_SRC_DIR=/lustre/wrk/misumi/roms_src/220409_001
-export ROMS_DAT_DIR=/lustre/wrk/misumi/roms_data
+export ROMS_SRC_DIR=${HOME_DIR}/ROMS-BEC
+export ROMS_DAT_DIR=/lustre/wrk/misumi/roms_data/ROMS_simple
 export OPT_PARALLEL=on
 export D_CODE=1002302
-export QUE=p
-export N_NODES=50
+export QUE=s
+export N_NODES=1
 export N_CPUS=40
 export N_MPIP=40
-export N_MEM=80gb
+export N_MEM=10Gb
 export WALL_TIME=12:00:00
 export FORT=ifort
 
@@ -18,57 +18,17 @@ export FORT=ifort
 export USE_SLATEC=
 export SLATEC_LIBDIR=/home/misumi/lib
 
-export P_JOB=`python jobtool.py pjob`
-export R_NUM=`python jobtool.py rnum`
-#export P_JOB=
-#export R_NUM=001
+#export P_JOB=`python jobtool.py pjob`
+#export R_NUM=`python jobtool.py rnum`
+export P_JOB=
+export R_NUM=001
 
-export D_NTIMES=52596
-export DT=300
-export H_NTIMES=8766
-export I_NTIMES=8766
-export S_NTIMES=288
-export D_DSTART=182.625
-
-#export D_NTIMES=26298
-#export DT=300
-#export H_NTIMES=8766
-#export I_NTIMES=8766
-#export S_NTIMES=288
-##export D_DSTART=182.625
-#export D_DSTART=91.3125
-
-#export D_NTIMES=39447
-#export DT=200
-#export H_NTIMES=13149
-#export I_NTIMES=13149
-#export S_NTIMES=432
-##export D_DSTART=182.625
-#export D_DSTART=91.3125
-
-#export D_NTIMES=26298
-#export DT=300
-#export H_NTIMES=8766
-#export I_NTIMES=8766
-#export S_NTIMES=288
-##export D_DSTART=182.625
-#export D_DSTART=91.3125
-
-#export D_NTIMES=39447
-#export DT=200
-#export H_NTIMES=13149
-#export I_NTIMES=13149
-#export S_NTIMES=432
-##export D_DSTART=182.625
-#export D_DSTART=91.3125
-
-#export D_NTIMES=26298
-#export DT=100
-#export H_NTIMES=26298
-#export I_NTIMES=26298
-#export S_NTIMES=864
-##export D_DSTART=182.625
-#export D_DSTART=60.875
+export D_NTIMES=1051920
+export DT=30
+export H_NTIMES=2880
+export I_NTIMES=2880
+export S_NTIMES=2880
+export D_DSTART=365.25
 
 if [ "${OPT_PARALLEL}" = "on" ]; then
   export PGM=oceanM
