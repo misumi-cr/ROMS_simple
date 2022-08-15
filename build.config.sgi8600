@@ -1,0 +1,96 @@
+export CASE_NAME="simple"
+export JOB_NAME="simple"
+export HOME_DIR=${PWD}
+export WORK_DIR=/lustre/wrk/misumi/roms_out/${CASE_NAME}
+export ROMS_SRC_DIR=${HOME_DIR}/ROMS-BEC
+export ROMS_DAT_DIR=/lustre/wrk/misumi/roms_data/ROMS_simple
+export OPT_PARALLEL=on
+export D_CODE=1002302
+export QUE=s
+export N_NODES=1
+export N_CPUS=40
+export N_MPIP=40
+export N_MEM=10Gb
+export WALL_TIME=12:00:00
+export FORT=ifort
+
+#export USE_SLATEC=on
+export USE_SLATEC=
+export SLATEC_LIBDIR=/home/misumi/lib
+
+#export P_JOB=`python jobtool.py pjob`
+#export R_NUM=`python jobtool.py rnum`
+export P_JOB=
+export R_NUM=001
+
+export D_NTIMES=1051920
+export DT=30
+export H_NTIMES=2880
+export I_NTIMES=2880
+export S_NTIMES=2880
+export D_DSTART=365.25
+
+if [ "${OPT_PARALLEL}" = "on" ]; then
+  export PGM=oceanM
+else
+  export PGM=oceanS
+fi
+
+if [ ! -e ${WORK_DIR} ]; then
+  mkdir -p ${WORK_DIR}
+else
+  echo
+  echo "Warning: WORK_DIR (${WORK_DIR}) is aleardy exist."
+fi
+
+if [ ! -e ${WORK_DIR}/bin ]; then
+  mkdir -p ${WORK_DIR}/bin
+fi
+if [ ! -e ${WORK_DIR}/log ]; then
+  mkdir -p ${WORK_DIR}/log
+fi
+if [ ! -e ${WORK_DIR}/in ]; then
+  mkdir -p ${WORK_DIR}/in
+fi
+if [ ! -e ${WORK_DIR}/out ]; then
+  mkdir -p ${WORK_DIR}/out
+fi
+
+export CASE_NAME=`echo $CASE_NAME | sed -e 's/\(.*\)/\L\1/'`
+
+if [ ! -e $CASE_NAME.h ]; then
+  echo "Copying HEADER file from templete."
+  cp template.h $CASE_NAME.h
+fi
+if [ ${R_NUM} = "001" ] && [ ! -e $CASE_NAME\_001.in ]; then
+  echo "Making IN file from templete."
+  ./mkin.py
+elif [ ${R_NUM} -gt 1 ]; then
+  echo "Making IN file from the previous one.."
+  ./mkrst.py
+fi
+
+N_PES=$(($N_NODES*N_CPUS))
+
+echo
+echo "CASE_NAME   : $CASE_NAME"
+echo "JOB_NAME    : $JOB_NAME"
+echo "WORK_DIR    : $WORK_DIR"
+echo "ROMS_SRC_DIR: $ROMS_SRC_DIR"
+echo "OPT_PARALLEL: $OPT_PARALLEL"
+echo "D_CODE      : $D_CODE"
+echo "QUE         : $QUE"
+echo "N_NODES     : $N_NODES"
+echo "N_CPUS      : $N_CPUS"
+echo "N_PES       : $N_PES"
+echo "N_MEM       : $N_MEM"
+echo "WALL_TIME   : $WALL_TIME"
+echo "R_NUM       : $R_NUM"
+echo
+
+if [ -e ${CASE_NAME}_${R_NUM}.in ]; then
+  ./mkchk.py
+else
+  echo "${CASE_NAME}_${R_NUM}.in does not exist."
+fi
+echo

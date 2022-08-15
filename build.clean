@@ -1,0 +1,18 @@
+#!/bin/sh
+
+debug=
+
+if [ ! -d trash ]; then
+ mkdir trash
+fi
+
+rm -rf trash/*
+
+set $CASE_NAME.h $CASE_NAME\_???.in $PGM Build
+while [ $# -gt 0 ]
+do
+  if [ -e $1 ]; then
+    $debug mv -f $1 trash
+  fi
+  shift
+done

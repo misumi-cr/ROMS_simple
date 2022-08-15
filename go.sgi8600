@@ -1,0 +1,116 @@
+#!/usr/bin/env bash
+
+function q0_submit(){
+qsub <<EOF
+#PBS -P ${D_CODE}
+#PBS -q ${QUE}
+#PBS -l select=${N_NODES}:ncpus=${N_CPUS}:mem=${N_MEM}:mpiprocs=${N_MPIP}
+#PBS -l walltime=${WALL_TIME}
+#PBS -N ${JOB_NAME}_${R_NUM}
+#PBS -o ${WORK_DIR}/log/o.${name}
+#PBS -e ${WORK_DIR}/log/e.${name}
+#PBS -W umask=022
+#PBS -V
+
+cd ${WORK_DIR}
+sync
+sleep 10
+mpijob ${WORK_DIR}/bin/${PGM} ${HOME_DIR}/${name}.in > ${WORK_DIR}/log/c.${name}
+
+cp ${HOME_DIR}/${name}.in ${WORK_DIR}/in
+
+EOF
+}
+
+function q1_submit(){
+qsub <<EOF
+#PBS -P ${D_CODE}
+#PBS -q ${QUE}
+#PBS -l select=${N_NODES}:ncpus=${N_CPUS}:mem=${N_MEM}:mpiprocs=${N_MPIP}
+#PBS -l walltime=${WALL_TIME}
+#PBS -N ${JOB_NAME}_${R_NUM}
+#PBS -o ${WORK_DIR}/log/o.${name}
+#PBS -e ${WORK_DIR}/log/e.${name}
+#PBS -W umask=022
+#PBS -W depend=afterok:${P_JOB}
+#PBS -V
+
+cd ${WORK_DIR}
+sync
+sleep 10
+mpijob ${WORK_DIR}/bin/${PGM} ${HOME_DIR}/${name}.in > ${WORK_DIR}/log/c.${name}
+
+cp ${HOME_DIR}/${name}.in ${WORK_DIR}/in
+
+EOF
+}
+
+function s0_submit(){
+qsub <<EOF
+#PBS -P ${D_CODE}
+#PBS -q ${QUE}
+#PBS -l select=${N_NODES}:ncpus=${N_CPUS}:mem=${N_MEM}:mpiprocs=${N_MPIP}
+#PBS -l walltime=${WALL_TIME}
+#PBS -N ${JOB_NAME}_${R_NUM}
+#PBS -o ${WORK_DIR}/log/o.${name}
+#PBS -e ${WORK_DIR}/log/e.${name}
+#PBS -W umask=022
+#PBS -V
+
+cd ${WORK_DIR}
+
+${WORK_DIR}/bin/${PGM} < ${HOME_DIR}/${name}.in > ${WORK_DIR}/log/c.${name}
+
+cp ${HOME_DIR}/${name}.in ${WORK_DIR}/in
+
+EOF
+}
+
+function s1_submit(){
+qsub <<EOF
+#PBS -P ${D_CODE}
+#PBS -q ${QUE}
+#PBS -l select=${N_NODES}:ncpus=${N_CPUS}:mem=${N_MEM}:mpiprocs=${N_MPIP}
+#PBS -l walltime=${WALL_TIME}
+#PBS -N ${JOB_NAME}_${R_NUM}
+#PBS -o ${WORK_DIR}/log/o.${name}
+#PBS -e ${WORK_DIR}/log/e.${name}
+#PBS -W umask=022
+#PBS -W depend=afterok:${P_JOB}
+#PBS -V
+
+cd ${WORK_DIR}
+
+${WORK_DIR}/bin/${PGM} < ${HOME_DIR}/${name}.in > ${WORK_DIR}/log/c.${name}
+
+cp ${HOME_DIR}/${name}.in ${WORK_DIR}/in
+
+EOF
+}
+
+source build.config.sgi8600
+
+num=${R_NUM}
+name=${CASE_NAME}_${num}
+
+if [ ${P_JOB:-UNDEF} = "UNDEF" ]; then
+  if [ -e ${PGM} ]; then
+    cp ${PGM} ${WORK_DIR}/bin/${PGM}
+  else
+    echo "Error: no ${PGM} exists."
+    echo 
+    exit 0
+  fi
+  cp -r External ${WORK_DIR}
+  if [ "${OPT_PARALLEL}" = "on" ]; then
+    q0_submit
+  else
+    s0_submit
+  fi
+else
+  if [ "${OPT_PARALLEL}" = "on" ]; then
+    q1_submit
+  else
+    s1_submit
+  fi
+fi
