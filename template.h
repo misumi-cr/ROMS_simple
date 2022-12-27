@@ -13,7 +13,7 @@
 #undef  WET_DRY
 #define NONLIN_EOS
 #define SOLVE3D
-#undef  SALINITY
+#define SALINITY
 #define SPLINES 
 
 /* output */ 
@@ -95,3 +95,6 @@
 
 /* addition */
 #define NO_LBC_ATT
+
+#define TCLIMATOLOGY
+#define TCLM_NUDGING

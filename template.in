@@ -144,12 +144,12 @@ GridsInLayer =  1
 !
 !                   1       2       3       4
 
-   LBC(isFsur) ==   Clo     Cha     Cha     Cha         ! free-surface
-   LBC(isUbar) ==   Clo     Fla     Fla     Fla         ! 2D U-momentum
-   LBC(isVbar) ==   Clo     Fla     Fla     Fla         ! 2D V-momentum
-   LBC(isUvel) ==   Clo     Rad     Rad     Rad         ! 3D U-momentum
-   LBC(isVvel) ==   Clo     Rad     Rad     Rad         ! 3D V-momentum
-   LBC(isMtke) ==   Clo     Rad     Rad     Rad         ! mixing TKE
+   LBC(isFsur) ==   Clo     Per     Cha     Per         ! free-surface
+   LBC(isUbar) ==   Clo     Per     Fla     Per         ! 2D U-momentum
+   LBC(isVbar) ==   Clo     Per     Fla     Per         ! 2D V-momentum
+   LBC(isUvel) ==   Clo     Per     Rad     Per         ! 3D U-momentum
+   LBC(isVvel) ==   Clo     Per     Rad     Per         ! 3D V-momentum
+   LBC(isMtke) ==   Clo     Per     Rad     Per         ! mixing TKE
 
    LBC(isTvar) ==   Clo     RadNud  RadNud  RadNud \    ! temperature
                     Clo     RadNud  RadNud  RadNud      ! salinity
