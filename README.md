@@ -1,7 +1,19 @@
 # ROMS_simple
 
-## Purpose
-- Make a simple ROMS setting for executing ROMS in various environment.
+## 目的
+- モデル開発のためにシンプルに実行できる環境を整える。
 
-## Original source
-- 220409_001
+
+## 設定
+- x:50, y:100, s:30
+
+## メモ
+### ヘッダ
+- ANA_M2OBC
+  - ubar, vbarなどの順圧流速の条件を決める。特定のcppフラグが立っていないときは0が入る。
+- ANA_FSOBC 
+  - free surfaceの条件を決める。特定のcppフラグが立っていないときは0が入る。
+- ANA_SMFLUX
+  - 海面の運動量の条件を決める。特定のcppフラグが立っていないときは0が入る。
+- ANA_STFLUX
+  - 海面のトレーサの条件を決める。特定のcppフラグが立っていないときは0が入る。
