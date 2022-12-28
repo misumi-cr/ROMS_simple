@@ -151,8 +151,8 @@ GridsInLayer =  1
    LBC(isVvel) ==   Clo     Per     Rad     Per         ! 3D V-momentum
    LBC(isMtke) ==   Clo     Per     Rad     Per         ! mixing TKE
 
-   LBC(isTvar) ==   Clo     RadNud  RadNud  RadNud \    ! temperature
-                    Clo     RadNud  RadNud  RadNud      ! salinity
+   LBC(isTvar) ==   Clo     Per     RadNud  Per \       ! temperature
+                    Clo     Per     RadNud  Per         ! salinity
 
 ! Adjoint-based algorithms can have different lateral boundary
 ! conditions keywords.
