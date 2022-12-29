@@ -55,6 +55,7 @@
 # define LONGWAVE
 # define ANA_CLOUD
 # undef  ANA_RAIN
+# define EMINUSP
 #else
 # define ANA_SMFLUX
 # define ANA_STFLUX
@@ -96,5 +97,5 @@
 /* addition */
 #define NO_LBC_ATT
 
-#define TCLIMATOLOGY
-#define TCLM_NUDGING
+#undef  TCLIMATOLOGY
+#undef  TCLM_NUDGING
