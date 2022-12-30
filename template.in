@@ -151,8 +151,8 @@ GridsInLayer =  1
    LBC(isVvel) ==   Clo     Per     Gra     Per         ! 3D V-momentum
    LBC(isMtke) ==   Clo     Per     Gra     Per         ! mixing TKE
 
-   LBC(isTvar) ==   Clo     Per     Cla     Per \       ! temperature
-                    Clo     Per     Cla     Per         ! salinity
+   LBC(isTvar) ==   Clo     Per     RadNud  Per \       ! temperature
+                    Clo     Per     RadNud  Per         ! salinity
 
 ! Adjoint-based algorithms can have different lateral boundary
 ! conditions keywords.
@@ -359,7 +359,7 @@ ad_VolCons(north) ==  F                            ! northern boundary
 ! Nudging/relaxation time scales, inverse scales will be computed
 ! internally, [1:Ngrids].
 
-       TNUDG == 20.0d0 20.0d0              ! days
+       TNUDG == 3.0d0 3.0d0              ! days
        ZNUDG == 30.0d0                     ! days
       M2NUDG == 30.0d0                     ! days
       M3NUDG == 30.0d0                     ! days
