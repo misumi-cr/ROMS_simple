@@ -726,8 +726,8 @@ Dout(iTvdif) == T T     ! temp_vdiff, ...    vertical diffusion
 
 ! Input NetCDF file names, [1:Ngrids].
 
-     GRDNAME == ${ROMS_DAT_DIR}/Grd_slope500m_221229.nc
-     ININAME == ${ROMS_DAT_DIR}/Ini_slope500m_221229.nc
+     GRDNAME == ${ROMS_DAT_DIR}/Grd_slope500m_230101.nc
+     ININAME == ${ROMS_DAT_DIR}/Ini_slope500m_230101.nc
      ITLNAME == /dev/null
      IRPNAME == /dev/null
      IADNAME == /dev/null
@@ -746,8 +746,8 @@ Dout(iTvdif) == T T     ! temp_vdiff, ...    vertical diffusion
 ! line per entry with a vertical bar (|) symbol after each entry,
 ! except the last one.
 
-     BRYNAME == ${ROMS_DAT_DIR}/Bry_slope500m_221229.nc
-     CLMNAME == ${ROMS_DAT_DIR}/Clm_slope500m_221229.nc
+     BRYNAME == ${ROMS_DAT_DIR}/Bry_slope500m_230101.nc
+     CLMNAME == ${ROMS_DAT_DIR}/Clm_slope500m_230101.nc
      FLXNAME == /dev/null
 
 ! Input forcing NetCDF file name(s).  The USER has the option to enter
@@ -764,7 +764,7 @@ Dout(iTvdif) == T T     ! temp_vdiff, ...    vertical diffusion
 
      NFFILES == 1                           ! number of unique forcing files
 
-     FRCNAME == ${ROMS_DAT_DIR}/Frc_slope500m_221229.nc
+     FRCNAME == ${ROMS_DAT_DIR}/Frc_slope500m_230101.nc
 
      TMXNAME == /dev/null
 
