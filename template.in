@@ -385,7 +385,7 @@ ad_VolCons(north) ==  F                            ! northern boundary
 ! Logical switches (TRUE/FALSE) to specify which variables to process for
 ! tracers climatology: [1:NAT+NPT,Ngrids]. See glossary below for details.
 
-  LtracerCLM == F F                        ! temperature, salinity, inert
+  LtracerCLM == F T                        ! temperature, salinity, inert
 
 ! Logical switches (TRUE/FALSE) to specify which variables to process for
 ! tracers 3d influx: [1:NAT+NPT,Ngrids]. See glossary below for details.

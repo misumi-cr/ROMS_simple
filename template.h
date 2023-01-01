@@ -13,7 +13,7 @@
 #undef  WET_DRY
 #define NONLIN_EOS
 #define SOLVE3D
-#undef  SALINITY
+#define SALINITY
 #define SPLINES 
 
 /* output */ 
@@ -54,7 +54,8 @@
 # undef  DIURNAL_SRFLUX
 # define LONGWAVE
 # define ANA_CLOUD
-# define ANA_RAIN
+# undef  ANA_RAIN
+# define EMINUSP
 #else
 # define ANA_SMFLUX
 # define ANA_STFLUX
@@ -96,5 +97,5 @@
 /* addition */
 #define NO_LBC_ATT
 
-#undef  TCLIMATOLOGY
-#undef  TCLM_NUDGING
+#define TCLIMATOLOGY
+#define TCLM_NUDGING
