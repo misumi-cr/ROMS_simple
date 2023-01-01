@@ -13,7 +13,7 @@
 #undef  WET_DRY
 #define NONLIN_EOS
 #define SOLVE3D
-#define SALINITY
+#undef  SALINITY
 #define SPLINES 
 
 /* output */ 
@@ -54,8 +54,7 @@
 # undef  DIURNAL_SRFLUX
 # define LONGWAVE
 # define ANA_CLOUD
-# undef  ANA_RAIN
-# define EMINUSP
+# define ANA_RAIN
 #else
 # define ANA_SMFLUX
 # define ANA_STFLUX
