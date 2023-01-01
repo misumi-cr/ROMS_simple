@@ -52,9 +52,11 @@
 #ifdef BULK_FLUXES
 # define SOLAR_SOURCE
 # undef  DIURNAL_SRFLUX
-# define LONGWAVE
-# define ANA_CLOUD
+# define LONGWAVE_OUT
+# define QCORRECTION
+# undef  ANA_CLOUD
 # undef  ANA_RAIN
+# define ATM_PRESS
 # define EMINUSP
 #else
 # define ANA_SMFLUX
@@ -89,9 +91,9 @@
 /* analytical data */
 #undef  ANA_INITIAL
 #define ANA_BTFLUX
-#define ANA_SPFLUX
+#undef  ANA_SPFLUX
 #define ANA_BPFLUX
-#define ANA_SSFLUX
+#undef  ANA_SSFLUX
 #define ANA_BSFLUX
 
 /* addition */
