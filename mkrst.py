@@ -45,6 +45,7 @@ p_num = p_num.zfill(3)
 ntimes = os.environ['D_NTIMES']
 dt = os.environ['DT']
 d_dstart = os.environ['D_DSTART']
+r_ntimes = os.environ['R_NTIMES']
 h_ntimes = os.environ['H_NTIMES']
 i_ntimes = os.environ['I_NTIMES']
 
@@ -85,7 +86,7 @@ for line in fi0:
     elif re.match(r'^\s*NTIMES\s*==',line):
       line = mod_ntimes(line, ntimes)
     elif re.match(r'^\s*NRST\s*==',line):
-      line = mod_ntimes(line, h_ntimes) 
+      line = mod_ntimes(line, r_ntimes) 
     elif re.match(r'^\s*NHIS\s*==',line):
       line = mod_ntimes(line, h_ntimes) 
     elif re.match(r'^\s*NAVG\s*==',line):

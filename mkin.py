@@ -6,6 +6,7 @@ case_name = os.environ['CASE_NAME']
 r_num     = os.environ['R_NUM']
 ntimes    = os.environ['D_NTIMES']
 h_ntimes  = os.environ['H_NTIMES']
+r_ntimes  = os.environ['R_NTIMES']
 i_ntimes  = os.environ['I_NTIMES']
 s_ntimes  = os.environ['S_NTIMES']
 dt        = os.environ['DT']
@@ -23,6 +24,7 @@ for line in fi0:
   line = line.replace('${R_NUM}'       ,r_num)
   line = line.replace('${NTIMES}'      ,ntimes)
   line = line.replace('${H_NTIMES}'    ,h_ntimes)
+  line = line.replace('${R_NTIMES}'    ,r_ntimes)
   line = line.replace('${I_NTIMES}'    ,i_ntimes)
   line = line.replace('${S_NTIMES}'    ,s_ntimes)
   line = line.replace('${DT}'          ,dt)

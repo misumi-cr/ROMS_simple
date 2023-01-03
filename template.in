@@ -207,7 +207,7 @@ ad_VolCons(north) ==  F                            ! northern boundary
 
        NRREC == -1
    LcycleRST == T
-        NRST == ${H_NTIMES}
+        NRST == ${R_NTIMES}
         NSTA == ${S_NTIMES}
         NFLT == 1
        NINFO == ${I_NTIMES}

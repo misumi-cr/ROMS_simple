@@ -26,6 +26,7 @@ export R_NUM=001
 export D_NTIMES=1051920
 export DT=30
 export H_NTIMES=2880
+export R_NTIMES=720
 export I_NTIMES=2880
 export S_NTIMES=2880
 export D_DSTART=365.25
