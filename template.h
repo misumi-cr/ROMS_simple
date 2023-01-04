@@ -79,8 +79,9 @@
 #endif 
 
 /* biological model */
-#undef BEC
+#define BEC
 #ifdef BEC
+# undef FE_TAG
 # undef ANA_BIOLOGY
 # undef CISO
 # undef  DIAGNOSTICS_BIO
