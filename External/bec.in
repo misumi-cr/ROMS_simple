@@ -138,7 +138,7 @@
 !
 !                   1       2       3       4
 
-   LBC(isTvar) ==   RadNud  RadNud  Clo     RadNud   ! idbio(:), compact
+   LBC(isTvar) ==   Clo     Per     RadNud  Per   ! idbio(:), compact
 
 ! Adjoint-based algorithms can have different lateral boundary
 ! conditions keywords.
