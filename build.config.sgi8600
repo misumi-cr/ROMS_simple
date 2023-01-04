@@ -1,5 +1,5 @@
-export CASE_NAME="bec"
-export JOB_NAME="bec"
+export CASE_NAME="bec_test"
+export JOB_NAME="bec_test"
 export HOME_DIR=${PWD}
 export WORK_DIR=/lustre/wrk/misumi/roms_out/${CASE_NAME}
 export ROMS_SRC_DIR=/home/misumi/github/ROMS-BEC
