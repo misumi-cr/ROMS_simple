@@ -81,8 +81,9 @@
 /* biological model */
 #undef BEC
 #ifdef BEC
+# undef ANA_BIOLOGY
 # undef CISO
-# define DIAGNOSTICS_BIO
+# undef  DIAGNOSTICS_BIO
 # ifdef  DIAGNOSTICS_BIO
 #  define DIAGNOSTICS
 # endif
