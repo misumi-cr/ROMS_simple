@@ -762,9 +762,10 @@ Dout(iTvdif) == T T     ! temp_vdiff, ...    vertical diffusion
 ! per entry with a continuation (\) or vertical bar (|) symbol after each
 ! entry, except the last one.
 
-     NFFILES == 1                           ! number of unique forcing files
+     NFFILES == 2                           ! number of unique forcing files
 
-     FRCNAME == ${ROMS_DAT_DIR}/Frc_slope500m_230102.nc
+     FRCNAME == ${ROMS_DAT_DIR}/Frc_slope500m_230102.nc \
+                ${ROMS_DAT_DIR}/Frc_sflux_slope500m_230102.nc
 
      TMXNAME == /dev/null
 
