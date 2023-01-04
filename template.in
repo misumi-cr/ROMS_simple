@@ -747,7 +747,7 @@ Dout(iTvdif) == T T     ! temp_vdiff, ...    vertical diffusion
 ! except the last one.
 
      BRYNAME == ${ROMS_DAT_DIR}/Bry_slope500m_230102.nc
-     CLMNAME == ${ROMS_DAT_DIR}/Clm_slope500m_230102.nc
+     CLMNAME == ${ROMS_DAT_DIR}/Clm_slope500m_230104.nc
      FLXNAME == /dev/null
 
 ! Input forcing NetCDF file name(s).  The USER has the option to enter
