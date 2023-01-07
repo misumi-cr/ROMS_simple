@@ -12306,6 +12306,51 @@
   'r3dvar'
   1.0d0
 
+'RESTORE_NO3'                                            ! Input/Output
+  'RESTORE_NO3'
+  'mmol/m3/sec'
+  'RESTORE_NO3, scalar, series'
+  'ocean_time'
+  'iDbio3(iRESTORE_NO3)'
+  'r3dvar'
+  1.0d0
+
+'NITRIF'                                                 ! Input/Output
+  'NITRIF'
+  'mmol/m3/sec'
+  'NITRIF, scalar, series'
+  'ocean_time'
+  'iDbio3(iNITRIF)'
+  'r3dvar'
+  1.0d0
+
+'DENITRIF'                                            ! Input/Output
+  'DENITRIF'
+  'mmol/m3/sec'
+  'DENITRIF, scalar, series'
+  'ocean_time'
+  'iDbio3(iDENITRIF)'
+  'r3dvar'
+  1.0d0
+
+'SED_DENITRIF'                                            ! Input/Output
+  'SED_DENITRIF'
+  'mmol/m3/sec'
+  'SED_DENITRIF, scalar, series'
+  'ocean_time'
+  'iDbio3(iSED_DENITRIF)'
+  'r3dvar'
+  1.0d0
+
+'NO3_V_sum'                                            ! Input/Output
+  'NO3_V_sum'
+  'mmol/m3/sec'
+  'NO3_V_sum, scalar, series'
+  'ocean_time'
+  'iDbio3(iNO3_V_sum)'
+  'r3dvar'
+  1.0d0
+
 'Fe_brate'                                            ! Input/Output
   'Fe_brate'
   'mmol/m3'
