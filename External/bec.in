@@ -241,12 +241,6 @@ Dout(iFe_premin)      == T
 Dout(iFe_hbio)        == T
 Dout(iFe_pgen)        == T
 
-Dout(iRESTORE_NO3)    == T
-Dout(iNITRIF)         == T
-Dout(iDENITRIF)       == T
-Dout(iSED_DENITRIF)   == T
-Dout(iNO3_V_sum)      == T
-
 !
 !  GLOSSARY:
 !  =========
